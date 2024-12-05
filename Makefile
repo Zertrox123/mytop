@@ -7,6 +7,9 @@
 
 SRC	=	main.c	\
 		src/display_first_line.c	\
+		src/display_second_line.c	\
+		src/display_line_four.c	\
+		src/display_last_line.c	\
 
 CFLAGS = -g3
 

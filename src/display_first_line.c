@@ -63,11 +63,12 @@ void display_first_line(void)
     int user_count = user_connect();
     int uptime_hours = uptime(1);
     int uptime_minutes = uptime(0);
-    char time_str[9];
+    char time[9];
 
-    strftime(time_str, 9, "%H:%M:%S", tm_info);
-    mvprintw(1, 1, "top - %s up  %d:%02d, %d user%s, load average: %.2f, "
-    "%.2f, %.2f\n", time_str, uptime_hours, uptime_minutes, user_count,
+    strftime(time, 9, "%H:%M:%S", tm_info);
+    printw("top - %s up  %d:%02d, %d user%s, load average: %.2f, "
+    "%.2f, %.2f\n", time, uptime_hours, uptime_minutes, user_count,
     user_count > 1 ? "s" : "", load_average[0], load_average[1],
     load_average[2]);
+    free(load_average);
 }
