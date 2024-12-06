@@ -29,8 +29,8 @@ int user_connect(void)
 
 double *load_av(void)
 {
-    double *load_average = malloc(3);
     FILE *loadavg_file = fopen("/proc/loadavg", "r");
+    double *load_average = malloc(sizeof(double) * 13);
 
     fscanf(loadavg_file, "%lf %lf %lf", &load_average[0], &load_average[1],
     &load_average[2]);

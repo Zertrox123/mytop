@@ -17,5 +17,6 @@ void display_first_line(void);
 void display_second_line(void);
 void display_line_four(struct sysinfo *info);
 void display_line_five(void);
+int display_files_executing(void);
 
 #endif /* MY_H */

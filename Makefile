@@ -10,6 +10,7 @@ SRC	=	main.c	\
 		src/display_second_line.c	\
 		src/display_line_four.c	\
 		src/display_last_line.c	\
+		src/tool_linkedlist.c	\
 
 CFLAGS = -g3
 
@@ -20,7 +21,7 @@ NAME	=	my_top
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-		gcc -o $(NAME) $(OBJ) $(CFLAGS) -lncurses
+		gcc -o $(NAME) $(OBJ) $(CFLAGS) -lncurses -g3
 
 clean:
 		rm -f $(OBJ)
