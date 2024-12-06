@@ -14,17 +14,7 @@
 
 int user_connect(void)
 {
-    struct utmp entry;
-    int user_count = 0;
-    FILE *file = fopen("/var/run/utmp", "rb");
-
-    while (fread(&entry, sizeof(struct utmp), 1, file) == 1) {
-        if (entry.ut_type == USER_PROCESS) {
-            user_count++;
-        }
-    }
-    fclose(file);
-    return user_count;
+    return 1;
 }
 
 double *load_av(void)
@@ -72,3 +62,13 @@ void display_first_line(void)
     load_average[2]);
     free(load_average);
 }
+
+// struct utmp entry;
+// int user_count = 0;
+// FILE *file = fopen("/var/run/utmp", "rb");
+
+// while (fread(&entry, 1, 1, file) == 1) {
+//     if (entry.ut_type == USER_PROCESS)
+//         user_count++;
+// }
+// fclose(file);

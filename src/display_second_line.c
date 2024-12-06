@@ -19,7 +19,7 @@ int handle_option_s(struct dirent *files, int running, int stopped,
     char option;
 
     if (files->d_name[0] >= '0' && files->d_name[0] <= '9') {
-        snprintf(stat_path, 64, "/proc/%s/stat", files->d_name);
+        snprintf(stat_path, 267, "/proc/%s/stat", files->d_name);
         stat_file = fopen(stat_path, "r");
         fscanf(stat_file, "%*d %*s %c", &option);
         fclose(stat_file);
@@ -37,7 +37,7 @@ int handle_option_r(struct dirent *files, int running, int stopped,
     char option;
 
     if (files->d_name[0] >= '0' && files->d_name[0] <= '9') {
-        snprintf(stat_path, 64, "/proc/%s/stat", files->d_name);
+        snprintf(stat_path, 267, "/proc/%s/stat", files->d_name);
         stat_file = fopen(stat_path, "r");
         fscanf(stat_file, "%*d %*s %c", &option);
         fclose(stat_file);
@@ -55,7 +55,7 @@ int handle_option_t(struct dirent *files, int running, int stopped,
     char option;
 
     if (files->d_name[0] >= '0' && files->d_name[0] <= '9') {
-        snprintf(stat_path, 64, "/proc/%s/stat", files->d_name);
+        snprintf(stat_path, 267, "/proc/%s/stat", files->d_name);
         stat_file = fopen(stat_path, "r");
         fscanf(stat_file, "%*d %*s %c", &option);
         fclose(stat_file);
