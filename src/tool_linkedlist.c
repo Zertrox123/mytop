@@ -42,12 +42,12 @@ void print_list(linked_list_t *head)
     int lines = 0;
 
     getmaxyx(stdscr, max_y, max_x);
-    printw("\n%s %s\n", "PID", "%CPU");
+    printw("\n%s %s %s\n", "PID", "%CPU", "%MEM");
     lines++;
     while (head->next) {
         if (lines >= max_y - 5)
             break;
-        printw("%s %d\n", head->pid, 100);
+        printw("%s %.1f %.1f\n", head->pid, 100.0, 0.0);
         head = head->next;
         lines++;
     }
