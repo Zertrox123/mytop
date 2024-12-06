@@ -41,8 +41,10 @@ int uptime(int boolean)
     uptime_hours = (int)(uptime_seconds / 3600);
     if (boolean == 0)
         return uptime_minutes;
-    else
+    if (boolean == 1)
         return uptime_hours;
+    if (boolean == 2)
+        return uptime_seconds;
 }
 
 void display_first_line(void)
@@ -51,14 +53,15 @@ void display_first_line(void)
     struct tm *tm_info = localtime(&t);
     double *load_average = load_av();
     int user_count = user_connect();
-    int uptime_hours = uptime(1);
     int uptime_minutes = uptime(0);
+    int uptime_hours = uptime(1);
+    int uptime_days = uptime(2) / (24 * 3600);
     char time[9];
 
     strftime(time, 9, "%H:%M:%S", tm_info);
-    printw("top - %s up  %d:%02d, %d user%s, load average: %.2f, "
-    "%.2f, %.2f\n", time, uptime_hours, uptime_minutes, user_count,
-    user_count > 1 ? "s" : "", load_average[0], load_average[1],
+    printw("top - %s up %d days, %d:%02d, %d user%s, load average: %.2f, "
+    "%.2f, %.2f\n", time, uptime_days, uptime_hours, uptime_minutes,
+    user_count, user_count > 1 ? "s" : "", load_average[0], load_average[1],
     load_average[2]);
     free(load_average);
 }
@@ -66,7 +69,6 @@ void display_first_line(void)
 // struct utmp entry;
 // int user_count = 0;
 // FILE *file = fopen("/var/run/utmp", "rb");
-
 // while (fread(&entry, 1, 1, file) == 1) {
 //     if (entry.ut_type == USER_PROCESS)
 //         user_count++;

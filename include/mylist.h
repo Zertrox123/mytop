@@ -10,6 +10,7 @@
 
 typedef struct linked_list_s {
     char pid[10];
+    char s;
     struct linked_list_s *next;
 } linked_list_t;
 

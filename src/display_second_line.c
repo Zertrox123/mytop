@@ -14,7 +14,7 @@
 int handle_option_s(struct dirent *files, int running, int stopped,
     int zombies)
 {
-    char stat_path[64];
+    char stat_path[267];
     FILE *stat_file;
     char option;
 
@@ -32,7 +32,7 @@ int handle_option_s(struct dirent *files, int running, int stopped,
 int handle_option_r(struct dirent *files, int running, int stopped,
     int zombies)
 {
-    char stat_path[64];
+    char stat_path[267];
     FILE *stat_file;
     char option;
 
@@ -50,7 +50,7 @@ int handle_option_r(struct dirent *files, int running, int stopped,
 int handle_option_t(struct dirent *files, int running, int stopped,
     int zombies)
 {
-    char stat_path[64];
+    char stat_path[267];
     FILE *stat_file;
     char option;
 
@@ -76,15 +76,14 @@ void display_second_line(void)
 
     files = readdir(proc_dir);
     while (files != NULL) {
-        run += handle_option_r(files, run, stop, zomb);
-        stop += handle_option_s(files, run, stop, zomb);
-        zomb += handle_option_t(files, run, stop, zomb);
+        run = handle_option_r(files, run, stop, zomb);
+        stop = handle_option_s(files, run, stop, zomb);
+        zomb = handle_option_t(files, run, stop, zomb);
         if (files->d_name[0] >= '0' && files->d_name[0] <= '9')
             all_tasks++;
         files = readdir(proc_dir);
     }
     closedir(proc_dir);
-    free(files);
-    printw("Tasks: %d total, %3d running, %3d sleeping, %3d stopped,"
-    "%3d zombie\n", all_tasks, run, all_tasks - run, stop, zomb);
+    printw("Tasks: %d total, %d running, %d sleeping, %d stopped, "
+    "%d zombie\n", all_tasks, run, all_tasks - run - stop - zomb, stop, zomb);
 }
