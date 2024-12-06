@@ -1,0 +1,7 @@
+./main.o:1: MAJOR:C-O1
+./my_top:1: MAJOR:C-O1
+./src/display_first_line.o:1: MAJOR:C-O1
+./src/display_last_line.o:1: MAJOR:C-O1
+./src/display_line_four.o:1: MAJOR:C-O1
+./src/display_second_line.o:1: MAJOR:C-O1
+./src/tool_linkedlist.o:1: MAJOR:C-O1
