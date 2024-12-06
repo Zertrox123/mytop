@@ -14,7 +14,7 @@
 
 int user_connect(void)
 {
-    return 1;
+    return 0;
 }
 
 double *load_av(void)
